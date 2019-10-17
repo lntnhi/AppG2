@@ -1,0 +1,14 @@
+E:\Sau\Study\NET\AppG2\AppG2\bin\Debug\AppG2.exe.config
+E:\Sau\Study\NET\AppG2\AppG2\bin\Debug\AppG2.exe
+E:\Sau\Study\NET\AppG2\AppG2\bin\Debug\AppG2.pdb
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.csprojAssemblyReference.cache
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.Properties.Resources.resources
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.csproj.GenerateResource.cache
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.csproj.CoreCompileInputs.cache
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.exe
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.pdb
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.frmChuongTrinh.resources
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.Slide_Show_Image___ThuyNhi.resources
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.View.frmThongTinSV.resources
+E:\Sau\Study\NET\AppG2\AppG2\bin\Debug\Data\Student.txt
+E:\Sau\Study\NET\AppG2\AppG2\bin\Debug\Data\LearningHistory.txt
