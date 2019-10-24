@@ -93,5 +93,22 @@ namespace AppG2.Controller
             else
                 return null;
         }
+
+        public static void deleteHistoryLearning (string pathHistoryFile, string historyID)
+        {
+            if (File.Exists(pathHistoryFile))
+            {
+                var lineArr = File.ReadAllLines(pathHistoryFile); //mảng lưu các dòng trong file
+                File.WriteAllText(pathHistoryFile,""); //ghi đè lên file
+                foreach (var line in lineArr)
+                {
+                    var historyLine = line.Split(new char[] { '#' });
+                    if (historyLine[0]!=historyID)
+                    {
+                        File.AppendAllText(pathHistoryFile, line + "\n"); //ghi thêm vào file
+                    }
+                }
+            }
+        }
     }
 }

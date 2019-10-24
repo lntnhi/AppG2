@@ -121,9 +121,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Data\LearningHistory.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Data\LearningHistory.txt" />
     <Content Include="Data\Student.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

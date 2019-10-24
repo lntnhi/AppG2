@@ -120,9 +120,13 @@ namespace AppG2.View
             File.Delete(pathAvtImg);
         }
 
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void ToolStripButton2_Click(object sender, EventArgs e)
         {
-
+            var historyLearning = bdsQTHT.Current as HistoryLearning; //as là ép kiểu
+            StudentService.deleteHistoryLearning(pathHistoryDataFile, historyLearning.IDHistoryLearning); //xóa trên file
+            dtgQTHT.Rows.RemoveAt(this.dtgQTHT.SelectedRows[0].Index); //xóa trên bảng hiển thị, SelectedRows là những hàng mình chọn trong trường hợp mình chọn nhiều hàng thì nó lấy hàng đầu tiên thôi, Index thì kệ nó
+            MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
     }
 }

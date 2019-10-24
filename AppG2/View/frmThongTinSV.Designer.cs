@@ -41,6 +41,9 @@
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtgQTHT = new System.Windows.Forms.DataGridView();
+            this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -56,9 +59,6 @@
             this.mniXoaAvt = new System.Windows.Forms.ToolStripMenuItem();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.bdsQTHT = new System.Windows.Forms.BindingSource(this.components);
-            this.Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgQTHT)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -180,7 +180,28 @@
             this.dtgQTHT.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgQTHT.Size = new System.Drawing.Size(597, 208);
             this.dtgQTHT.TabIndex = 0;
-            this.dtgQTHT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
+            // 
+            // Column
+            // 
+            this.Column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column.DataPropertyName = "IDHistoryLearning";
+            this.Column.HeaderText = "STT";
+            this.Column.Name = "Column";
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "Period";
+            this.Column1.HeaderText = "Thời gian học";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.DataPropertyName = "Address";
+            this.Column3.HeaderText = "Địa chỉ";
+            this.Column3.Name = "Column3";
             // 
             // toolStrip1
             // 
@@ -209,6 +230,7 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(47, 22);
             this.toolStripButton2.Text = "Xóa";
+            this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
             // 
             // toolStripButton1
             // 
@@ -316,28 +338,6 @@
             this.txtTen.Name = "txtTen";
             this.txtTen.Size = new System.Drawing.Size(76, 20);
             this.txtTen.TabIndex = 18;
-            // 
-            // Column
-            // 
-            this.Column.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column.DataPropertyName = "IDHistoryLearning";
-            this.Column.HeaderText = "STT";
-            this.Column.Name = "Column";
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Period";
-            this.Column1.HeaderText = "Thời gian học";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.DataPropertyName = "Address";
-            this.Column3.HeaderText = "Địa chỉ";
-            this.Column3.Name = "Column3";
             // 
             // frmThongTinSV
             // 
