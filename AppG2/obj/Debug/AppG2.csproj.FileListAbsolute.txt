@@ -11,3 +11,4 @@ E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.frmChuongTrinh.resources
 E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.Slide_Show_Image___ThuyNhi.resources
 E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.View.frmThongTinSV.resources
 E:\Sau\Study\NET\AppG2\AppG2\bin\Debug\Data\Student.txt
+E:\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.View.frmQTHTChiTiet.resources

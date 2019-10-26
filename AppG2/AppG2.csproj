@@ -53,6 +53,12 @@
     <Compile Include="frmChuongTrinh.Designer.cs">
       <DependentUpon>frmChuongTrinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmQTHTChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmQTHTChiTiet.Designer.cs">
+      <DependentUpon>frmQTHTChiTiet.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmThongTinSV.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </Compile>
     <EmbeddedResource Include="frmChuongTrinh.resx">
       <DependentUpon>frmChuongTrinh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmQTHTChiTiet.resx">
+      <DependentUpon>frmQTHTChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmThongTinSV.resx">
       <DependentUpon>frmThongTinSV.cs</DependentUpon>

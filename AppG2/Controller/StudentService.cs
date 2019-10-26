@@ -110,5 +110,43 @@ namespace AppG2.Controller
                 }
             }
         }
+
+        public static void addHistory(int yearFrom, int yearEnd, string address, string studentID, string pathHistoryFile)
+        {
+            var max = 0;
+            var lineArr = File.ReadAllLines(pathHistoryFile); //mảng lưu các dòng trong file
+            foreach (var line in lineArr)
+            {
+                var historyLine = line.Split(new char[] { '#' });
+                if (max < int.Parse(historyLine[0])) max = int.Parse(historyLine[0]);
+            }
+            max++;
+            if (File.Exists(pathHistoryFile))
+            {
+                string line = max+ "#" + yearFrom + "#" + yearEnd + "#" + address + "#" + studentID;
+                File.AppendAllText(pathHistoryFile, line + "\n"); //ghi thêm vào file
+            }
+        }
+        public static void editHistory(int yearFrom, int yearEnd, string address, string studentID, string pathHistoryFile, string historyID)
+        {
+            if (File.Exists(pathHistoryFile))
+            {
+                var lineArr = File.ReadAllLines(pathHistoryFile); //mảng lưu các dòng trong file
+                File.WriteAllText(pathHistoryFile, ""); //ghi đè lên file
+                foreach (var line in lineArr)
+                {
+                    var historyLine = line.Split(new char[] { '#' });
+                    if (historyLine[0] != historyID)
+                    {
+                        File.AppendAllText(pathHistoryFile, line + "\n"); //ghi thêm vào file
+                    }
+                    else
+                    {
+                        string lineEdit = historyID + "#" + yearFrom + "#" + yearEnd + "#" + address + "#" + studentID;
+                        File.AppendAllText(pathHistoryFile, lineEdit + "\n");
+                    }
+                }
+            }
+        }
     }
 }

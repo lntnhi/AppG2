@@ -15,6 +15,7 @@ namespace AppG2.View
 {
     public partial class frmThongTinSV : Form
     {
+        Student student;
         #region Variables for process Image Avt 
         Image img;
         string pathDirecImg;
@@ -45,7 +46,7 @@ namespace AppG2.View
             bdsQTHT.DataSource = null;
             dtgQTHT.AutoGenerateColumns = false;
 
-            var student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, maSV);
+            student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, maSV);
             if (student == null)
             {
                 throw new Exception("Không tồn tại sinh viên này");
@@ -124,9 +125,68 @@ namespace AppG2.View
         {
             var historyLearning = bdsQTHT.Current as HistoryLearning; //as là ép kiểu
             StudentService.deleteHistoryLearning(pathHistoryDataFile, historyLearning.IDHistoryLearning); //xóa trên file
-            dtgQTHT.Rows.RemoveAt(this.dtgQTHT.SelectedRows[0].Index); //xóa trên bảng hiển thị, SelectedRows là những hàng mình chọn trong trường hợp mình chọn nhiều hàng thì nó lấy hàng đầu tiên thôi, Index thì kệ nó
+            dtgQTHT.Rows.RemoveAt(dtgQTHT.SelectedRows[0].Index); //xóa trên bảng hiển thị, SelectedRows là những hàng mình chọn trong trường hợp mình chọn nhiều hàng thì nó lấy hàng đầu tiên thôi, Index thì kệ nó
             MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            var f= new frmQTHTChiTiet(student.IDStudent, pathHistoryDataFile);
+            if (f.ShowDialog() == DialogResult.OK)
+            {
+                //tiến hành nạp lại DL lên lưới
+                student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, student.IDStudent);
+                if (student == null)
+                {
+                    throw new Exception("Không tồn tại sinh viên này");
+                }
+                else
+                {
+                    txtMaSV.Text = student.IDStudent;
+                    txtHo.Text = student.LastName;
+                    txtTen.Text = student.FirstName;
+                    txtQueQuan.Text = student.POB;
+                    dtpNgaySinh.Value = student.DOB;
+                    chkGioiTinh.Checked = student.Gender == GENDER.Male;
+                    if (student.ListHistoryLearning != null)
+                    {
+                        bdsQTHT.DataSource = student.ListHistoryLearning;
+                    }
+                }
+                dtgQTHT.DataSource = bdsQTHT;
+            }
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            var history = bdsQTHT.Current as HistoryLearning; 
+            if (history!=null)
+            {
+                var f = new frmQTHTChiTiet(student.IDStudent, pathHistoryDataFile, history);
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    //tiến hành nạp lại DL lên lưới
+                    student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, student.IDStudent);
+                    if (student == null)
+                    {
+                        throw new Exception("Không tồn tại sinh viên này");
+                    }
+                    else
+                    {
+                        txtMaSV.Text = student.IDStudent;
+                        txtHo.Text = student.LastName;
+                        txtTen.Text = student.FirstName;
+                        txtQueQuan.Text = student.POB;
+                        dtpNgaySinh.Value = student.DOB;
+                        chkGioiTinh.Checked = student.Gender == GENDER.Male;
+                        if (student.ListHistoryLearning != null)
+                        {
+                            bdsQTHT.DataSource = student.ListHistoryLearning;
+                        }
+                    }
+                    dtgQTHT.DataSource = bdsQTHT;
+                }
+            }           
+        }
     }
 }
