@@ -67,8 +67,31 @@ namespace AppG2.View
             dtgQTHT.DataSource = bdsQTHT; 
             //sau đó qua bên form click chuột phải vô cái bảng -> Edit Col -> sửa Data Prop thành tên trường của mình đặt
         }
+        
+        private void updateData () //Nạp lại dữ liệu
+        {
+            student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, student.IDStudent);
+            if (student == null)
+            {
+                throw new Exception("Không tồn tại sinh viên này");
+            }
+            else
+            {
+                txtMaSV.Text = student.IDStudent;
+                txtHo.Text = student.LastName;
+                txtTen.Text = student.FirstName;
+                txtQueQuan.Text = student.POB;
+                dtpNgaySinh.Value = student.DOB;
+                chkGioiTinh.Checked = student.Gender == GENDER.Male;
+                if (student.ListHistoryLearning != null)
+                {
+                    bdsQTHT.DataSource = student.ListHistoryLearning;
+                }
+            }
+            dtgQTHT.DataSource = bdsQTHT;
+        }
 
-        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) //click vô avt
         {
             //nhớ chọn sizemode là StretchImage bên Properties
             OpenFileDialog ofd = new OpenFileDialog();
@@ -81,7 +104,7 @@ namespace AppG2.View
             }
         }
 
-        private void BtnCapNhat_Click(object sender, EventArgs e)
+        private void BtnCapNhat_Click(object sender, EventArgs e) //update avt
         {
             #region Cập nhật hình đại diện
             bool imgSave = false;
@@ -114,19 +137,24 @@ namespace AppG2.View
             e.Effect = DragDropEffects.Copy;
         }
 
-        private void MniXoaAvt_Click(object sender, EventArgs e)
+        private void MniXoaAvt_Click(object sender, EventArgs e) //xóa avt
         {
             MessageBox.Show("Xóa ảnh đại diện");
             picAvatar.Image = Properties.Resources.a;
             File.Delete(pathAvtImg);
         }
 
-        private void ToolStripButton2_Click(object sender, EventArgs e)
+        private void btnXoa_Click(object sender, EventArgs e)
         {
-            var historyLearning = bdsQTHT.Current as HistoryLearning; //as là ép kiểu
-            StudentService.deleteHistoryLearning(pathHistoryDataFile, historyLearning.IDHistoryLearning); //xóa trên file
-            dtgQTHT.Rows.RemoveAt(dtgQTHT.SelectedRows[0].Index); //xóa trên bảng hiển thị, SelectedRows là những hàng mình chọn trong trường hợp mình chọn nhiều hàng thì nó lấy hàng đầu tiên thôi, Index thì kệ nó
-            MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult dlr = MessageBox.Show("Có chắc chắn xóa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dlr == DialogResult.Yes)
+            {
+                var historyLearning = bdsQTHT.Current as HistoryLearning;
+                StudentService.deleteHistoryLearning(pathHistoryDataFile, historyLearning.IDHistoryLearning); //xóa trên file
+                //dtgQTHT.Rows.RemoveAt(dtgQTHT.SelectedRows[0].Index); //xóa trên bảng hiển thị, SelectedRows là những hàng mình chọn trong trường hợp mình chọn nhiều hàng thì nó lấy hàng đầu tiên thôi, Index thì kệ nó
+                updateData();
+                MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)
@@ -134,26 +162,7 @@ namespace AppG2.View
             var f= new frmQTHTChiTiet(student.IDStudent, pathHistoryDataFile);
             if (f.ShowDialog() == DialogResult.OK)
             {
-                //tiến hành nạp lại DL lên lưới
-                student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, student.IDStudent);
-                if (student == null)
-                {
-                    throw new Exception("Không tồn tại sinh viên này");
-                }
-                else
-                {
-                    txtMaSV.Text = student.IDStudent;
-                    txtHo.Text = student.LastName;
-                    txtTen.Text = student.FirstName;
-                    txtQueQuan.Text = student.POB;
-                    dtpNgaySinh.Value = student.DOB;
-                    chkGioiTinh.Checked = student.Gender == GENDER.Male;
-                    if (student.ListHistoryLearning != null)
-                    {
-                        bdsQTHT.DataSource = student.ListHistoryLearning;
-                    }
-                }
-                dtgQTHT.DataSource = bdsQTHT;
+                updateData();
             }
         }
 
@@ -165,26 +174,7 @@ namespace AppG2.View
                 var f = new frmQTHTChiTiet(student.IDStudent, pathHistoryDataFile, history);
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    //tiến hành nạp lại DL lên lưới
-                    student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, student.IDStudent);
-                    if (student == null)
-                    {
-                        throw new Exception("Không tồn tại sinh viên này");
-                    }
-                    else
-                    {
-                        txtMaSV.Text = student.IDStudent;
-                        txtHo.Text = student.LastName;
-                        txtTen.Text = student.FirstName;
-                        txtQueQuan.Text = student.POB;
-                        dtpNgaySinh.Value = student.DOB;
-                        chkGioiTinh.Checked = student.Gender == GENDER.Male;
-                        if (student.ListHistoryLearning != null)
-                        {
-                            bdsQTHT.DataSource = student.ListHistoryLearning;
-                        }
-                    }
-                    dtgQTHT.DataSource = bdsQTHT;
+                    updateData();
                 }
             }           
         }

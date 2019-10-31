@@ -46,18 +46,18 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.btnXoa = new System.Windows.Forms.ToolStripButton();
+            this.btnEdit = new System.Windows.Forms.ToolStripButton();
+            this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lnkChonAnh = new System.Windows.Forms.LinkLabel();
             this.menuAvatar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mniXoaAvt = new System.Windows.Forms.ToolStripMenuItem();
             this.txtTen = new System.Windows.Forms.TextBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.btnEdit = new System.Windows.Forms.ToolStripButton();
-            this.btnAdd = new System.Windows.Forms.ToolStripButton();
             this.picAvatar = new System.Windows.Forms.PictureBox();
-            this.mniXoaAvt = new System.Windows.Forms.ToolStripMenuItem();
             this.bdsQTHT = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgQTHT)).BeginInit();
@@ -207,7 +207,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
-            this.toolStripButton2,
+            this.btnXoa,
             this.btnEdit,
             this.btnAdd});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -221,6 +221,36 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(100, 22);
             this.toolStripLabel1.Text = "Quá trình học tập";
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnXoa.Image = global::AppG2.Properties.Resources.dustbin;
+            this.btnXoa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(47, 22);
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnEdit.Image = global::AppG2.Properties.Resources.pencil;
+            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(46, 22);
+            this.btnEdit.Text = "Sửa";
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.btnAdd.Image = global::AppG2.Properties.Resources.add;
+            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(58, 22);
+            this.btnAdd.Text = "Thêm";
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // statusStrip1
             // 
@@ -256,6 +286,14 @@
             this.menuAvatar.Name = "menuAvatar";
             this.menuAvatar.Size = new System.Drawing.Size(116, 26);
             // 
+            // mniXoaAvt
+            // 
+            this.mniXoaAvt.Image = global::AppG2.Properties.Resources.cancel;
+            this.mniXoaAvt.Name = "mniXoaAvt";
+            this.mniXoaAvt.Size = new System.Drawing.Size(115, 22);
+            this.mniXoaAvt.Text = "Xóa Avt";
+            this.mniXoaAvt.Click += new System.EventHandler(this.MniXoaAvt_Click);
+            // 
             // txtTen
             // 
             this.txtTen.Location = new System.Drawing.Point(268, 65);
@@ -290,36 +328,6 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton2.Image = global::AppG2.Properties.Resources.dustbin;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(47, 22);
-            this.toolStripButton2.Text = "Xóa";
-            this.toolStripButton2.Click += new System.EventHandler(this.ToolStripButton2_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnEdit.Image = global::AppG2.Properties.Resources.pencil;
-            this.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(46, 22);
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.btnAdd.Image = global::AppG2.Properties.Resources.add;
-            this.btnAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(58, 22);
-            this.btnAdd.Text = "Thêm";
-            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
-            // 
             // picAvatar
             // 
             this.picAvatar.ContextMenuStrip = this.menuAvatar;
@@ -332,14 +340,6 @@
             this.picAvatar.TabStop = false;
             this.picAvatar.DragDrop += new System.Windows.Forms.DragEventHandler(this.PicAvatar_DragDrop);
             this.picAvatar.DragEnter += new System.Windows.Forms.DragEventHandler(this.PicAvatar_DragEnter);
-            // 
-            // mniXoaAvt
-            // 
-            this.mniXoaAvt.Image = global::AppG2.Properties.Resources.cancel;
-            this.mniXoaAvt.Name = "mniXoaAvt";
-            this.mniXoaAvt.Size = new System.Drawing.Size(115, 22);
-            this.mniXoaAvt.Text = "Xóa Avt";
-            this.mniXoaAvt.Click += new System.EventHandler(this.MniXoaAvt_Click);
             // 
             // frmThongTinSV
             // 
@@ -400,7 +400,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripButton btnEdit;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton btnXoa;
         private System.Windows.Forms.ToolStripButton btnAdd;
         private System.Windows.Forms.LinkLabel lnkChonAnh;
         private System.Windows.Forms.Button button1;
