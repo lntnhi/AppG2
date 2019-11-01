@@ -124,7 +124,7 @@ namespace AppG2.Controller
             if (File.Exists(pathHistoryFile))
             {
                 string line = max+ "#" + yearFrom + "#" + yearEnd + "#" + address + "#" + studentID;
-                File.AppendAllText(pathHistoryFile, line + "\n"); //ghi thêm vào file
+                File.AppendAllText(pathHistoryFile, line+ "\n"); //ghi thêm vào file
             }
         }
         public static void editHistory(int yearFrom, int yearEnd, string address, string studentID, string pathHistoryFile, string historyID)

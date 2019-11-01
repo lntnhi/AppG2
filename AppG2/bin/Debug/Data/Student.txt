@@ -1,4 +1,4 @@
-﻿102T1#Nguyễn#Mon#Female#2018-12-31#Huế
+102T1#Nguyễn#Mon#Female#2018-12-31#Huế
 102T2#Lê#Min#Male#2018-12-30#Đà Nẵng
 102T3#Nguyễn#Mun#Female#2018-12-29#Quảng Nam
 102T4#Trần#Men#Male#2018-12-28#Huế

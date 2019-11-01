@@ -26,6 +26,7 @@ namespace AppG2.View
         string pathStudentDataFile;
         string pathHistoryDataFile;
         #endregion
+        
         public frmThongTinSV(string maSV)
         {
             InitializeComponent();
@@ -64,7 +65,7 @@ namespace AppG2.View
                     bdsQTHT.DataSource = student.ListHistoryLearning;
                 }
             }
-            dtgQTHT.DataSource = bdsQTHT; 
+            dtgQTHT.DataSource = bdsQTHT;
             //sau đó qua bên form click chuột phải vô cái bảng -> Edit Col -> sửa Data Prop thành tên trường của mình đặt
         }
         
