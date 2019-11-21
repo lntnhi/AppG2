@@ -46,28 +46,7 @@ namespace AppG2.View
 
             bdsQTHT.DataSource = null;
             dtgQTHT.AutoGenerateColumns = false;
-
-            //student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, maSV);
-            student = StudentService.GetStudentDB(maSV);
-            if (student == null)
-            {
-                throw new Exception("Không tồn tại sinh viên này");
-            }
-            else
-            {
-                txtMaSV.Text = student.IDStudent;
-                txtHo.Text = student.LastName;
-                txtTen.Text = student.FirstName;
-                txtQueQuan.Text = student.POB;
-                dtpNgaySinh.Value = student.DOB;
-                chkGioiTinh.Checked = student.Gender == GENDER.Male;
-                //if (student.ListHistoryLearning != null)
-                if (StudentService.GetHistoryLearningDB(maSV)!=null)
-                {
-                    bdsQTHT.DataSource = StudentService.GetHistoryLearningDB(maSV);
-                }
-            }
-            dtgQTHT.DataSource = bdsQTHT;
+            updateData();
             //sau đó qua bên form click chuột phải vô cái bảng -> Edit Col -> sửa Data Prop thành tên trường của mình đặt
         }
         
@@ -183,11 +162,6 @@ namespace AppG2.View
                     updateData();
                 }
             }           
-        }
-
-        private void txtMaSV_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -24,6 +24,7 @@ namespace AppG2.View
             dtgContact.AutoGenerateColumns = false;
 
             updateData();
+            addNewLabel();
         }
 
         private void updateData(string search=null)
@@ -38,6 +39,43 @@ namespace AppG2.View
                 bdsContact.DataSource = listContacts;
             }
             dtgContact.DataSource = bdsContact;
+        }
+
+        public void addNewLabel()
+        {
+            flowLayoutPanel1.Controls.Clear();
+            List<string> listLabelDuplicate = new List<string>();
+            var listContactNoSort = ContactService.GetContactDB();
+
+            //Them vao mang cac chu cai dau tien cua name
+            foreach (var item in listContactNoSort)
+            {
+                listLabelDuplicate.Add(item.Character);
+            }
+
+            //Loai bo cac phan tu trung nhau
+            List<String> labels = listLabelDuplicate.Distinct().ToList();
+
+            //Sap xep lai mang
+            labels.Sort();
+
+            //Tao label moi 
+            for (int i = 0; i < labels.Count; i++)
+            {
+                Label lbl = new Label();
+                lbl.Text = labels[i];
+                lbl.Click += new System.EventHandler(this.label_Click);
+                flowLayoutPanel1.Controls.Add(lbl);
+            }
+        }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+            var labelName = ((Label)sender).Text;
+            var listContactNoSort = ContactService.GetContactInAlphabetic(labelName);
+            var newContactList = listContactNoSort.OrderBy(x => x.Name).ToList();
+            bdsContact.DataSource = newContactList;
+            bdsContact.ResetBindings(true);
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

@@ -41,6 +41,8 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.bdsContact = new System.Windows.Forms.BindingSource(this.components);
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsContact)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +52,7 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Location = new System.Drawing.Point(150, 46);
+            this.txtSearch.Location = new System.Drawing.Point(150, 50);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(418, 20);
             this.txtSearch.TabIndex = 14;
@@ -64,7 +66,7 @@
             this.Contacts.AutoSize = true;
             this.Contacts.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Contacts.ForeColor = System.Drawing.Color.Red;
-            this.Contacts.Location = new System.Drawing.Point(299, 9);
+            this.Contacts.Location = new System.Drawing.Point(299, 10);
             this.Contacts.Name = "Contacts";
             this.Contacts.Size = new System.Drawing.Size(113, 29);
             this.Contacts.TabIndex = 15;
@@ -75,9 +77,9 @@
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(342, 72);
+            this.btnAdd.Location = new System.Drawing.Point(342, 78);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(52, 27);
+            this.btnAdd.Size = new System.Drawing.Size(52, 29);
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -88,9 +90,9 @@
             this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDel.Location = new System.Drawing.Point(516, 72);
+            this.btnDel.Location = new System.Drawing.Point(516, 78);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(52, 27);
+            this.btnDel.Size = new System.Drawing.Size(52, 29);
             this.btnDel.TabIndex = 17;
             this.btnDel.Text = "Delete";
             this.btnDel.UseVisualStyleBackColor = true;
@@ -101,9 +103,9 @@
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(431, 72);
+            this.btnEdit.Location = new System.Drawing.Point(431, 78);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(49, 27);
+            this.btnEdit.Size = new System.Drawing.Size(49, 29);
             this.btnEdit.TabIndex = 18;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -120,9 +122,9 @@
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dtgContact.Location = new System.Drawing.Point(150, 138);
+            this.dtgContact.Location = new System.Drawing.Point(150, 149);
             this.dtgContact.Name = "dtgContact";
-            this.dtgContact.Size = new System.Drawing.Size(418, 219);
+            this.dtgContact.Size = new System.Drawing.Size(418, 236);
             this.dtgContact.TabIndex = 19;
             // 
             // STT
@@ -158,19 +160,38 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(516, 363);
+            this.btnClose.Location = new System.Drawing.Point(516, 391);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(52, 27);
+            this.btnClose.Size = new System.Drawing.Size(52, 29);
             this.btnClose.TabIndex = 20;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(596, 170);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(66, 206);
+            this.flowLayoutPanel1.TabIndex = 21;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(593, 153);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(19, 14);
+            this.label.TabIndex = 22;
+            this.label.Text = "All";
+            this.label.Click += new System.EventHandler(this.label_Click);
+            // 
             // frmContact
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 402);
+            this.ClientSize = new System.Drawing.Size(674, 433);
+            this.Controls.Add(this.label);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dtgContact);
             this.Controls.Add(this.btnEdit);
@@ -201,5 +222,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label label;
     }
 }

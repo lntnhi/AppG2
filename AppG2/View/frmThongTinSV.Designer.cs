@@ -153,7 +153,6 @@
             this.txtMaSV.Name = "txtMaSV";
             this.txtMaSV.Size = new System.Drawing.Size(233, 20);
             this.txtMaSV.TabIndex = 13;
-            this.txtMaSV.TextChanged += new System.EventHandler(this.txtMaSV_TextChanged);
             // 
             // panel1
             // 

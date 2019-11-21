@@ -147,5 +147,27 @@ namespace AppG2.Controller
             cnt.Phone = contact.Phone;
             db.SaveChanges();
         }
+
+        public static List<Contacts> GetContactInAlphabetic(string text)
+        {
+            List<Contacts> newListContact = new List<Contacts>();
+            if (!text.Equals("All"))
+            {
+                List<Contacts> listContact = GetContactDB();
+
+                foreach (var item in listContact)
+                {
+                    if (String.Compare(item.Character, text) >= 0)
+                    {
+                        newListContact.Add(item);
+                    }
+                }
+                return newListContact;
+            }
+            else
+            {
+                return GetContactDB();
+            }
+        }
     }
 }
