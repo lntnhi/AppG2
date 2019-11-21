@@ -150,19 +150,18 @@ namespace AppG2.Controller
 
         public static List<Contacts> GetContactInAlphabetic(string text)
         {
-            List<Contacts> newListContact = new List<Contacts>();
+            List<Contacts> listContactAfterCharacter = new List<Contacts>();
             if (!text.Equals("All"))
             {
                 List<Contacts> listContact = GetContactDB();
-
                 foreach (var item in listContact)
                 {
                     if (String.Compare(item.Character, text) >= 0)
                     {
-                        newListContact.Add(item);
+                        listContactAfterCharacter.Add(item);
                     }
                 }
-                return newListContact;
+                return listContactAfterCharacter;
             }
             else
             {

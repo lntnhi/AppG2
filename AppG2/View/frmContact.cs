@@ -45,10 +45,10 @@ namespace AppG2.View
         {
             flowLayoutPanel1.Controls.Clear();
             List<string> listLabelDuplicate = new List<string>();
-            var listContactNoSort = ContactService.GetContactDB();
+            var listContact = ContactService.GetContactDB();
 
             //Them vao mang cac chu cai dau tien cua name
-            foreach (var item in listContactNoSort)
+            foreach (var item in listContact)
             {
                 listLabelDuplicate.Add(item.Character);
             }
@@ -56,25 +56,21 @@ namespace AppG2.View
             //Loai bo cac phan tu trung nhau
             List<String> labels = listLabelDuplicate.Distinct().ToList();
 
-            //Sap xep lai mang
-            labels.Sort();
-
             //Tao label moi 
             for (int i = 0; i < labels.Count; i++)
             {
                 Label lbl = new Label();
                 lbl.Text = labels[i];
-                lbl.Click += new System.EventHandler(this.label_Click);
+                lbl.Click += new System.EventHandler(this.label_Click); //EventHandler là gọi đến sự kiện gì đó
                 flowLayoutPanel1.Controls.Add(lbl);
             }
         }
 
         private void label_Click(object sender, EventArgs e)
         {
-            var labelName = ((Label)sender).Text;
-            var listContactNoSort = ContactService.GetContactInAlphabetic(labelName);
-            var newContactList = listContactNoSort.OrderBy(x => x.Name).ToList();
-            bdsContact.DataSource = newContactList;
+            var labelName = ((Label)sender).Text; //sender đại diện cho đối tượng của event, ở đây là label
+            var listContact = ContactService.GetContactInAlphabetic(labelName);
+            bdsContact.DataSource = listContact;
             bdsContact.ResetBindings(true);
         }
 
