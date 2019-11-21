@@ -15,7 +15,6 @@ namespace AppG2.View
     public partial class frmContact : Form
     {
         string pathFile;
-        Contacts contact;
         public frmContact()
         {
             InitializeComponent();
@@ -24,21 +23,12 @@ namespace AppG2.View
             bdsContact.DataSource = null;
             dtgContact.AutoGenerateColumns = false;
 
-            List<Contacts> listContacts = ContactService.GetContact(pathFile);
-            if (listContacts == null)
-            {
-                throw new Exception("Không tồn tại mảng");
-            }
-            else
-            {
-                bdsContact.DataSource = listContacts;
-            }
-            dtgContact.DataSource = bdsContact;
+            updateData();
         }
 
         private void updateData(string search=null)
         {
-            List<Contacts> listContacts = ContactService.GetContact(pathFile,search);
+            List<Contacts> listContacts = ContactService.GetContactDB(search);
             if (listContacts == null)
             {
                 throw new Exception("Không tồn tại mảng");
@@ -55,7 +45,7 @@ namespace AppG2.View
             var contact = bdsContact.Current as Contacts;
             if (contact != null)
             {
-                var f = new frmContactCT(pathFile, contact);
+                var f = new frmContactCT(contact);
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     updateData();
@@ -65,7 +55,7 @@ namespace AppG2.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var f = new frmContactCT(pathFile);
+            var f = new frmContactCT();
             if (f.ShowDialog() == DialogResult.OK)
             {
                 updateData();
@@ -78,7 +68,7 @@ namespace AppG2.View
             if (dlr == DialogResult.Yes)
             {
                 var contact = bdsContact.Current as Contacts;
-                ContactService.delete(pathFile, contact.IDContact);
+                ContactService.DeleteContactDB(contact.IDContact);
                 updateData();
                 MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -47,7 +47,8 @@ namespace AppG2.View
             bdsQTHT.DataSource = null;
             dtgQTHT.AutoGenerateColumns = false;
 
-            student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, maSV);
+            //student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, maSV);
+            student = StudentService.GetStudentDB(maSV);
             if (student == null)
             {
                 throw new Exception("Không tồn tại sinh viên này");
@@ -60,9 +61,10 @@ namespace AppG2.View
                 txtQueQuan.Text = student.POB;
                 dtpNgaySinh.Value = student.DOB;
                 chkGioiTinh.Checked = student.Gender == GENDER.Male;
-                if (student.ListHistoryLearning != null)
+                //if (student.ListHistoryLearning != null)
+                if (StudentService.GetHistoryLearningDB(maSV)!=null)
                 {
-                    bdsQTHT.DataSource = student.ListHistoryLearning;
+                    bdsQTHT.DataSource = StudentService.GetHistoryLearningDB(maSV);
                 }
             }
             dtgQTHT.DataSource = bdsQTHT;
@@ -71,7 +73,8 @@ namespace AppG2.View
         
         private void updateData () //Nạp lại dữ liệu
         {
-            student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, student.IDStudent);
+            //student = StudentService.GetStudent(pathHistoryDataFile, pathStudentDataFile, student.IDStudent);
+            student = StudentService.GetStudentDB(student.IDStudent);
             if (student == null)
             {
                 throw new Exception("Không tồn tại sinh viên này");
@@ -84,9 +87,11 @@ namespace AppG2.View
                 txtQueQuan.Text = student.POB;
                 dtpNgaySinh.Value = student.DOB;
                 chkGioiTinh.Checked = student.Gender == GENDER.Male;
-                if (student.ListHistoryLearning != null)
+                //if (student.ListHistoryLearning != null)
+                if (StudentService.GetHistoryLearningDB(student.IDStudent) != null)
                 {
-                    bdsQTHT.DataSource = student.ListHistoryLearning;
+                    //bdsQTHT.DataSource = student.ListHistoryLearning;
+                    bdsQTHT.DataSource = StudentService.GetHistoryLearningDB(student.IDStudent);
                 }
             }
             dtgQTHT.DataSource = bdsQTHT;
@@ -178,6 +183,11 @@ namespace AppG2.View
                     updateData();
                 }
             }           
+        }
+
+        private void txtMaSV_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

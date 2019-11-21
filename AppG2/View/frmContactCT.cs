@@ -16,10 +16,9 @@ namespace AppG2.View
     {
         string pathFile;
         Contacts contact;
-        public frmContactCT(string pathFile, Contacts contact = null)
+        public frmContactCT(Contacts contact = null)
         {
             InitializeComponent();
-            this.pathFile = pathFile;
             this.contact = contact;
             if (contact != null)
             {
@@ -38,18 +37,22 @@ namespace AppG2.View
 
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            var name = txtName.Text;
-            var phone = txtPhone.Text;
-            var email = txtEmail.Text;
             if (contact != null)
             {
-                //cập nhật 
-                ContactService.edit(name, phone, email, pathFile,contact.IDContact);
+                //cap nhat
+                contact.Name = txtName.Text;
+                contact.Email = txtEmail.Text;
+                contact.Phone = txtPhone.Text;
+                ContactService.EditContactDB(contact);
             }
             else
             {
-                //thêm mới
-                ContactService.add(name, phone, email, pathFile);
+                //them moi 
+                Contacts cont = new Contacts();
+                cont.Name = txtName.Text;
+                cont.Email = txtEmail.Text;
+                cont.Phone = txtPhone.Text;
+                ContactService.AddContactDB(cont);
             }
             MessageBox.Show("Đã cập nhật thành công");
             DialogResult = DialogResult.OK; // đóng form

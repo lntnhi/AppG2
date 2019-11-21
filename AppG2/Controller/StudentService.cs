@@ -93,7 +93,20 @@ namespace AppG2.Controller
             else
                 return null;
         }
-
+        
+        /// <summary>
+        /// Lấy sinh viên theo MSV từ DB
+        /// </summary>
+        /// <param name="idStudent">Mã SV</param>
+        /// <returns>SV hoặc null nếu không tồn tại</returns>
+        public static Student GetStudentDB (string idStudent)
+        {
+            return new AppG2Context().StudentDbset.Where(e => e.IDStudent == idStudent).FirstOrDefault(); //e là 1 sinh viên, là cái x đó
+        }
+        public static List<HistoryLearning> GetHistoryLearningDB (string idStudent)
+        {
+            return new AppG2Context().HistoryLearningDbset.Where(e => e.IDStudent == idStudent).OrderBy(e => e.YearFrom).ToList();
+        }
         public static void deleteHistoryLearning (string pathHistoryFile, string historyID)
         {
             if (File.Exists(pathHistoryFile))
@@ -127,6 +140,7 @@ namespace AppG2.Controller
                 File.AppendAllText(pathHistoryFile, line+ "\n"); //ghi thêm vào file
             }
         }
+
         public static void editHistory(int yearFrom, int yearEnd, string address, string studentID, string pathHistoryFile, string historyID)
         {
             if (File.Exists(pathHistoryFile))

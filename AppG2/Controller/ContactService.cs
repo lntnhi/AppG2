@@ -10,31 +10,6 @@ namespace AppG2.Controller
 {
     public class ContactService
     {
-
-        /*public static List<Contacts> GetContact(string pathFile)
-        {
-            if (File.Exists(pathFile))
-            {
-                var listLines = File.ReadAllLines(pathFile);
-                List<Contacts> list = new List<Contacts>();
-                foreach (var line in listLines)
-                {
-                    var rs = line.Split(new char[] { '#' }); //tách chuỗi ngăn bởi dấu #
-                    Contacts contact = new Contacts
-                    {
-                        IDContact = rs[0],
-                        Name = rs[1],
-                        Phone = rs[2],
-                        Email = rs[3]
-                    };
-                    list.Add(contact);
-                }
-                return list;
-            }
-            else
-                return null;
-        }*/
-
         public static List<Contacts> GetContact(string pathFile, string search=null)
         {
             if (File.Exists(pathFile))
@@ -134,6 +109,43 @@ namespace AppG2.Controller
                     }
                 }
             }
+        }
+
+        /****************************ĐÂY LÀ DB******************************/
+        public static List<Contacts> GetContactDB(string search = null)
+        {
+            if (search == null) search = "";
+            return new AppG2Context().ContactsDbset.
+                Where(e => (e.Name.Contains(search)) || (e.Email.Contains(search)) || (e.Phone.Contains(search))).
+                OrderBy(e => e.Name).
+                ToList();
+        }
+
+        public static void DeleteContactDB(string contactID)
+        {
+            var db = new AppG2Context();
+            var contact = db.ContactsDbset.Where(e => e.IDContact == contactID).FirstOrDefault();
+            if (contact != null)
+                db.ContactsDbset.Remove(contact);
+            db.SaveChanges();
+        }
+
+        public static void AddContactDB(Contacts contact)
+        {
+            var db = new AppG2Context();
+            contact.IDContact = Guid.NewGuid().ToString();
+            db.ContactsDbset.Add(contact);
+            db.SaveChanges();
+        }
+
+        public static void EditContactDB(Contacts contact)
+        {
+            var db = new AppG2Context();
+            var cnt = db.ContactsDbset.Find(contact.IDContact);
+            cnt.Name = contact.Name;
+            cnt.Email = contact.Email;
+            cnt.Phone = contact.Phone;
+            db.SaveChanges();
         }
     }
 }
