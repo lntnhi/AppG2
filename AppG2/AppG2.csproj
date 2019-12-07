@@ -72,9 +72,14 @@
     <Compile Include="Migrations\201911211429220_contact.designer.cs">
       <DependentUpon>201911211429220_contact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911220104407_h.cs" />
+    <Compile Include="Migrations\201911220104407_h.designer.cs">
+      <DependentUpon>201911220104407_h.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\AppG2Context.cs" />
     <Compile Include="Model\Contacts.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="View\frmContact.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +91,12 @@
     </Compile>
     <Compile Include="View\frmContactCT.Designer.cs">
       <DependentUpon>frmContactCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmQTHTChiTiet.cs">
       <SubType>Form</SubType>
@@ -118,11 +129,17 @@
     <EmbeddedResource Include="Migrations\201911211429220_contact.resx">
       <DependentUpon>201911211429220_contact.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911220104407_h.resx">
+      <DependentUpon>201911220104407_h.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmContact.resx">
       <DependentUpon>frmContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmContactCT.resx">
       <DependentUpon>frmContactCT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmQTHTChiTiet.resx">
       <DependentUpon>frmQTHTChiTiet.cs</DependentUpon>

@@ -43,6 +43,7 @@
             this.bdsContact = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label = new System.Windows.Forms.Label();
+            this.btnImport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContact)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsContact)).BeginInit();
             this.SuspendLayout();
@@ -178,18 +179,32 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(593, 153);
+            this.label.Location = new System.Drawing.Point(601, 153);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(19, 14);
             this.label.TabIndex = 22;
             this.label.Text = "All";
             this.label.Click += new System.EventHandler(this.label_Click);
             // 
+            // btnImport
+            // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImport.Location = new System.Drawing.Point(259, 78);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(52, 29);
+            this.btnImport.TabIndex = 23;
+            this.btnImport.Text = "Import";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
             // frmContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 433);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.label);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.btnClose);
@@ -224,5 +239,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Button btnImport;
     }
 }

@@ -14,12 +14,13 @@ namespace AppG2.View
 {
     public partial class frmContactCT : Form
     {
-        string pathFile;
         Contacts contact;
-        public frmContactCT(Contacts contact = null)
+        User user;
+        public frmContactCT(User user, Contacts contact = null)
         {
             InitializeComponent();
             this.contact = contact;
+            this.user = user;
             if (contact != null)
             {
                 //chỉnh sửa
@@ -49,9 +50,11 @@ namespace AppG2.View
             {
                 //them moi 
                 Contacts cont = new Contacts();
+                cont.IDContact = Guid.NewGuid().ToString();
                 cont.Name = txtName.Text;
                 cont.Email = txtEmail.Text;
                 cont.Phone = txtPhone.Text;
+                cont.Username = user.Username;
                 ContactService.AddContactDB(cont);
             }
             MessageBox.Show("Đã cập nhật thành công");

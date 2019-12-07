@@ -57,3 +57,5 @@ D:\Mine\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.csproj.CopyComplete
 D:\Mine\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.exe
 D:\Mine\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.pdb
 D:\Mine\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.Migrations.contact.resources
+D:\Mine\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.Migrations.h.resources
+D:\Mine\Sau\Study\NET\AppG2\AppG2\obj\Debug\AppG2.View.frmLogin.resources

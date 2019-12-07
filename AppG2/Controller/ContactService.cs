@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AppG2.Controller
 {
@@ -112,11 +113,12 @@ namespace AppG2.Controller
         }
 
         /****************************ĐÂY LÀ DB******************************/
-        public static List<Contacts> GetContactDB(string search = null)
+        public static List<Contacts> GetContactDB(User user, string search = null)
         {
+            var db = new AppG2Context();
             if (search == null) search = "";
-            return new AppG2Context().ContactsDbset.
-                Where(e => (e.Name.Contains(search)) || (e.Email.Contains(search)) || (e.Phone.Contains(search))).
+            return db.ContactsDbset.
+                Where(e =>(e.Username == user.Username) && ((e.Name.Contains(search)) || (e.Email.Contains(search)) || (e.Phone.Contains(search)))).
                 OrderBy(e => e.Name).
                 ToList();
         }
@@ -133,7 +135,6 @@ namespace AppG2.Controller
         public static void AddContactDB(Contacts contact)
         {
             var db = new AppG2Context();
-            contact.IDContact = Guid.NewGuid().ToString();
             db.ContactsDbset.Add(contact);
             db.SaveChanges();
         }
@@ -141,22 +142,34 @@ namespace AppG2.Controller
         public static void EditContactDB(Contacts contact)
         {
             var db = new AppG2Context();
-            var cnt = db.ContactsDbset.Find(contact.IDContact);
+            //List<Contacts> listContacts = GetContactDB(user);
+            //Contacts contactOld = isExist(contact, listContacts);
+            //if (contactOld != null)
+            //{
+                var cnt = db.ContactsDbset.Find(contact.IDContact);
+                cnt.Name = contact.Name;
+                cnt.Email = contact.Email;
+                cnt.Phone = contact.Phone;
+                db.SaveChanges();
+            //}            
+        }
+        public static void EditContactImport(Contacts contact)
+        {
+            var db = new AppG2Context();
+            var cnt = db.ContactsDbset.Where(e => e.Phone == contact.Phone && e.Username == contact.Username).FirstOrDefault();
             cnt.Name = contact.Name;
             cnt.Email = contact.Email;
-            cnt.Phone = contact.Phone;
             db.SaveChanges();
         }
-
-        public static List<Contacts> GetContactInAlphabetic(string text)
+        public static List<Contacts> GetContactInAlphabetic(User user, string text)
         {
             List<Contacts> listContactAfterCharacter = new List<Contacts>();
             if (!text.Equals("All"))
             {
-                List<Contacts> listContact = GetContactDB();
+                List<Contacts> listContact = GetContactDB(user);
                 foreach (var item in listContact)
                 {
-                    if (String.Compare(item.Character, text) >= 0)
+                    if (string.Compare(item.Character, text) >= 0)
                     {
                         listContactAfterCharacter.Add(item);
                     }
@@ -165,7 +178,51 @@ namespace AppG2.Controller
             }
             else
             {
-                return GetContactDB();
+                return GetContactDB(user);
+            }
+        }
+    
+        public static User login(string username, string password)
+        {
+            var db = new AppG2Context();
+            var user = db.UserDbset.Where(e => e.Username == username && e.Password == password).FirstOrDefault();
+            if (user != null) return user;
+            return null;
+        }
+        public static Contacts isExist(Contacts contact, List<Contacts> listContacts)
+        {
+            foreach (var contactOld in listContacts)
+            {
+                if (contactOld.Phone.Equals(contact.Phone)) return contactOld;
+            }
+            return null;
+        }
+
+        public static void Import(User user, List<Contacts> listContacts)
+        {
+            var db = new AppG2Context();
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Chọn file .csv";
+            ofd.Filter = "File csv(*.csv)|*.csv";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                var listLines = File.ReadAllLines(ofd.FileName);
+                foreach (var line in listLines)
+                {
+                    var rs = line.Split(new char[] { ',' });
+                    Contacts contact = new Contacts
+                    {
+                        IDContact = Guid.NewGuid().ToString(),
+                        Name = rs[0],
+                        Phone = rs[1],
+                        Email = rs[2],
+                        Username = user.Username
+                    };
+                    if (isExist(contact, listContacts) == null)
+                        db.ContactsDbset.Add(contact);
+                    else EditContactImport(contact);
+                }
+                db.SaveChanges();
             }
         }
     }

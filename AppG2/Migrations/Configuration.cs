@@ -60,76 +60,102 @@
                     });
                 context.SaveChanges();
             }
+
+            context.UserDbset.AddOrUpdate(
+                new Model.User
+                {
+                    Username = "admin",
+                    Password = "123",
+                    FullName = "Nhi"
+                },
+                new Model.User
+                {
+                    Username = "sau",
+                    Password = "456",
+                    FullName = "Nhi"
+                });
+            context.SaveChanges();
+
             context.ContactsDbset.AddOrUpdate(
                 new Model.Contacts
                 {
                     IDContact = "1",
                     Name = "Mùa Xuân",
                     Phone = "0987654321",
-                    Email = "haha@gmail.com"
+                    Email = "haha@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "2",
                     Name = "Sang",
                     Phone = "0987654322",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "3",
                     Name = "Có",
                     Phone = "0987654323",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "4",
                     Name = "Anh Đào",
                     Phone = "0987654322",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "5",
                     Name = "Haha",
                     Phone = "0987654325",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "6",
                     Name = "Hihi",
                     Phone = "0987654326",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "7",
                     Name = "Nhi",
                     Phone = "0987654322",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "8",
                     Name = "Heo",
                     Phone = "0987654322",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "9",
                     Name = "Bò",
                     Phone = "0987654322",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 },
                 new Model.Contacts
                 {
                     IDContact = "10",
                     Name = "Gà",
                     Phone = "0987654322",
-                    Email = "haha2@gmail.com"
+                    Email = "haha2@gmail.com",
+                    Username = "admin"
                 });
             context.SaveChanges();
         }

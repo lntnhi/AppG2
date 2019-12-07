@@ -163,5 +163,10 @@ namespace AppG2.View
                 }
             }           
         }
+
+        private void txtMaSV_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

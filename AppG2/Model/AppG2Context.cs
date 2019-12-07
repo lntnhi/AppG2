@@ -16,5 +16,6 @@ namespace AppG2.Model
         public DbSet<Student> StudentDbset { get; set; }
         public DbSet<HistoryLearning> HistoryLearningDbset { get; set; }
         public DbSet<Contacts> ContactsDbset { get; set; }
+        public DbSet<User> UserDbset { get; set; }
     }
 }
